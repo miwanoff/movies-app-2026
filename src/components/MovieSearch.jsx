@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+
 const API_URL = "https://www.omdbapi.com?apikey=ee8dd3f";
 
 const MovieSearch = () => {
@@ -22,8 +23,17 @@ const MovieSearch = () => {
   };
   //searchMovie();
   return (
-    <div>
-      <h2>Movie Search</h2>
+    <div className="search-container">
+      <div className="search">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && searchMovie(searchTerm)}
+          placeholder="Search for movies"
+        />
+
+      </div>
     </div>
   );
 };
