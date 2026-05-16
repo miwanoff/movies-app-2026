@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import SearchIcon from "./../assets/search.svg";
+import MovieCard from "./MovieCard";
 
 const API_URL = "https://www.omdbapi.com?apikey=ee8dd3f";
 
@@ -17,6 +18,11 @@ const MovieSearch = () => {
       const response = await fetch(`${API_URL}&s=${title}`);
       const data = await response.json();
       console.log(data);
+      if(data.Search) {
+        setMovies(data.Search);
+      } else {
+        setMovies([]);
+      }
     } catch (error) {
       console.error("Error searching movies:", error);
     }
@@ -38,6 +44,19 @@ const MovieSearch = () => {
           onClick={() => searchMovie(searchTerm)}
         />
       </div>
+      {movies.length > 0 ? (
+        <div className="container">
+          {movies.map((movie) => (
+            <div key={movie.imdbID}>
+              <MovieCard movie={movie} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="empty">
+          <h2>Нічого не знайдено...</h2>
+        </div>
+      )}
     </div>
   );
 };
