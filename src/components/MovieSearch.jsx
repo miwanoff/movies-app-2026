@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import SearchIcon from "./../assets/search.svg";
 import MovieCard from "./MovieCard";
 
-const API_URL = "https://www.omdbapi.com?apikey=ee8dd3f";
+const API_URL = import.meta.env.VITE_API_URL;
 
 const MovieSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
