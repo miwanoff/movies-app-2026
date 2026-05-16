@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
+import SearchIcon from "./../assets/search.svg";
 
 const API_URL = "https://www.omdbapi.com?apikey=ee8dd3f";
 
@@ -32,7 +32,11 @@ const MovieSearch = () => {
           onKeyDown={(e) => e.key === "Enter" && searchMovie(searchTerm)}
           placeholder="Search for movies"
         />
-
+        <img
+          src={SearchIcon}
+          alt="search"
+          onClick={() => searchMovie(searchTerm)}
+        />
       </div>
     </div>
   );
